@@ -1,0 +1,45 @@
+:root {
+  --bg: #0b0f19;
+  --panel: #121826;
+  --card: #161d2e;
+  --border: #1f2a44;
+
+  --text: #e5e7eb;
+  --muted: #9aa4bf;
+  --primary: #4f7cff;
+  --accent: #22d3ee;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 0 0 10px;
+  background: radial-gradient(1200px 600px at 10% -10%, #1a2340, transparent),
+              radial-gradient(800px 400px at 90% 10%, #0e7490, transparent),
+              var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
