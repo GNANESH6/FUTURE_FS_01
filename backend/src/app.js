@@ -8,20 +8,12 @@ import adminRoutes from "./routes/admin.routes.js";
 
 const app = express();
 
-// ✅ CORS FIRST
-app.use(corsMiddleware);
-<<<<<<< HEAD
-=======
-app.options(corsMiddleware);
->>>>>>> 10338a2 (Fix express options wildcard crash)
+app.use(corsMiddleware); // only this
 
-// ✅ Parsers
 app.use(express.json());
 
-// ✅ Static
 app.use("/uploads", express.static(path.resolve("uploads")));
 
-// ✅ Routes
 app.use("/api", publicRoutes);
 app.use("/api/admin", adminRoutes);
 
