@@ -4,7 +4,7 @@ export default function Footer() {
   const [settings, setSettings] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/settings")
+    fetch("https://future-fs-01-yky5.onrender.com/api/settings")
       .then(res => res.json())
       .then(data => setSettings(data));
   }, []);

@@ -6,7 +6,7 @@ export default function Contact() {
   const [socials, setSocials] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/socials")
+    fetch("https://future-fs-01-yky5.onrender.com/api/socials")
       .then((res) => res.json())
       .then((data) => setSocials(data))
       .catch((err) => console.error("Social fetch error", err));

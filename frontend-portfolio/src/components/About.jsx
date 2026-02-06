@@ -4,7 +4,7 @@ export default function About() {
   const [about, setAbout] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/about")
+    fetch("https://future-fs-01-yky5.onrender.com/api/about")
       .then(res => res.json())
       .then(data => setAbout(data));
   }, []);

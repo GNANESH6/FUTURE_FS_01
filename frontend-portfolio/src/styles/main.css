@@ -13,7 +13,7 @@
   --accent: #a386f1;
   --danger: #ef4444;
 
-  --border: rgba(255,255,255,0.08);
+  --border: rgba(255, 255, 255, 0.08);
 
   --radius: 12px;
   --radius-lg: 18px;
@@ -37,8 +37,16 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Ubuntu,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   animation: pageFade 500ms ease;
 }
 
@@ -133,7 +141,7 @@ button,
 .resume-btn {
   padding: 10px 20px;
   border-radius: 12px;
-  background:rgba(23, 26, 55, 0.041);
+  background: rgba(23, 26, 55, 0.041);
   border: 1px solid var(--border);
   color: white;
   font-size: 14px;
@@ -153,7 +161,6 @@ button,
 .resume-btn:active {
   transform: translateY(0);
 }
-
 
 /* ======================================================
    HERO SECTION
@@ -187,7 +194,7 @@ button,
   width: 340px;
   height: 420px;
   border-radius: 32px;
-  box-shadow: 0 45px 90px rgba(0,0,0,0.65);
+  box-shadow: 0 45px 90px rgba(0, 0, 0, 0.65);
   animation: scaleFade 700ms var(--ease-out);
 }
 
@@ -203,6 +210,10 @@ section {
   max-width: 1100px;
   margin: auto;
   padding: 60px 24px;
+}
+
+.resume-btn {
+  background-color: #2e2f41;
 }
 
 .section-title {
@@ -228,11 +239,11 @@ section {
 /* ======================================================
    CARDS
 ====================================================== */
-.card {  
+.card {
   background: linear-gradient(
     180deg,
-    rgba(255,255,255,0.05),
-    rgba(255,255,255,0.015)
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.015)
   );
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -248,7 +259,7 @@ section {
   border-radius: inherit;
   background: radial-gradient(
     circle at top left,
-    rgba(79,124,255,0.12),
+    rgba(79, 124, 255, 0.12),
     transparent 60%
   );
   opacity: 0;
@@ -261,8 +272,8 @@ section {
 
 .card:hover {
   transform: translateY(-8px);
-  border-color: rgba(79,124,255,0.45);
-  box-shadow: 0 22px 55px rgba(0,0,0,0.45);
+  border-color: rgba(79, 124, 255, 0.45);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
 }
 
 /* ======================================================
@@ -276,7 +287,6 @@ section {
 /* ======================================================
    SOCIAL ICONS
 ====================================================== */
-
 
 .footer-socials {
   display: flex;
@@ -293,7 +303,6 @@ section {
   font-size: 18px;
 }
 
-
 .social-icon {
   font-size: 20px;
   color: var(--primary);
@@ -301,8 +310,8 @@ section {
 
 .social-link:hover {
   transform: translateY(-7px);
-  color: rgb(52, 102, 195)
-  }
+  color: rgb(52, 102, 195);
+}
 
 .project-actions {
   display: flex;
@@ -325,10 +334,8 @@ section {
 
 .project-actions .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
-
-
 
 /* ================= FOOTER ================= */
 
@@ -394,7 +401,9 @@ button:focus-visible {
   color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .project-btn.secondary {
@@ -410,11 +419,9 @@ button:focus-visible {
    MOBILE APP INTERFACE (REPLACEMENT ONLY)
 ====================================================== */
 
-
 /* Phones & Mobile WebView */
 
 @media (max-width: 768px) {
-
   /* ----- APP WIDTH CONTROL ----- */
   body {
     max-width: 420px;
@@ -478,7 +485,6 @@ button:focus-visible {
     border-radius: 22px;
   }
 
-
   /* ----- SECTIONS ----- */
   section {
     padding: 42px 18px;
@@ -493,17 +499,15 @@ button:focus-visible {
   .card {
     padding: 18px;
   }
-
 }
 /* ======================================================
    SIMPLE CLEAN MOBILE FOOTER (FINAL FIX)
 ====================================================== */
 
 @media (max-width: 768px) {
-
   .footer {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -535,19 +539,16 @@ button:focus-visible {
     font-size: 12px;
     opacity: 0.7;
   }
-
 }
-
 
 /* Small phones */
 @media (max-width: 420px) {
-  .hero h1 {
-    font-size: 22px;
+  .hero h2 {
+    font-size: 15px;
   }
 
   .hero-img {
-    width: 160px;
-    height: 250px;
+    width: 250px;
+    height: 360px;
   }
 }
-

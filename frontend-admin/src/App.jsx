@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/useAuth";
 
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+//import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
@@ -31,7 +31,7 @@ export default function App() {
       <Routes>
         {/* Public */}
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} /> */}
 
         {/* Admin protected */}
         <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>

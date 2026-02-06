@@ -296,11 +296,8 @@ button.small {
   margin-top: 60px;
   padding: 40px;
   border-radius: 26px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(0, 0, 0, 0.15)
-  );
+  background: var(--card);
+  
 }
 .resume:hover {
   transform: translateY(2px);
