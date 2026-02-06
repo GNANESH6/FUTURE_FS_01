@@ -1,6 +1,8 @@
 import cors from "cors";
 
-export default cors({
-  origin: ["https://gnanesh-portfolio-delta.vercel.app"],
-  credentials: true
-});
+const corsOptions = {
+  origin: "https://gnanesh-portfolio-delta.vercel.app",
+  credentials: true,
+};
+
+export default cors(corsOptions);
