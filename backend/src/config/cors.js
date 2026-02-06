@@ -1,10 +1,22 @@
 import cors from "cors";
 
+const allowedOrigins = [
+  "https://gnanesh-portfolio-delta.vercel.app",
+  "https://admin-gnanesh.vercel.app"
+];
+
 const corsOptions = {
-  origin: [
-    "https://gnanesh-portfolio-delta.vercel.app",
-    "https://admin-gnanesh.vercel.app"
-  ],
+  origin: function (origin, callback) {
+
+    // allow requests without origin (Postman etc)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 };
 
