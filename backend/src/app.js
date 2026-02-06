@@ -10,6 +10,10 @@ const app = express();
 
 // ✅ CORS FIRST
 app.use(corsMiddleware);
+<<<<<<< HEAD
+=======
+app.options(corsMiddleware);
+>>>>>>> 10338a2 (Fix express options wildcard crash)
 
 // ✅ Parsers
 app.use(express.json());
