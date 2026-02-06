@@ -10,7 +10,6 @@ const app = express();
 
 // ✅ CORS FIRST
 app.use(corsMiddleware);
-app.options("/*", corsMiddleware);
 
 // ✅ Parsers
 app.use(express.json());
