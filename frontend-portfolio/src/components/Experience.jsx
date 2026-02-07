@@ -5,8 +5,17 @@ export default function Experience() {
   const [experience, setExperience] = useState([]);
 
   useEffect(() => {
-    api.get("/experience").then(res => setExperience(res.data));
+    fetchExperience();
   }, []);
+
+  const fetchExperience = async () => {
+    try {
+      const res = await api.get("/experience");
+      setExperience(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <section id="experience" className="section">
@@ -17,8 +26,10 @@ export default function Experience() {
           <div key={exp._id} className="card">
             <h3>{exp.role}</h3>
             <p className="muted">{exp.company}</p>
-            <p>{exp.description}</p>
-            <span className="muted">{exp.duration}</span>
+
+            {exp.description && <p>{exp.description}</p>}
+
+            <span className="muted">{exp.period}</span>
           </div>
         ))}
       </div>
