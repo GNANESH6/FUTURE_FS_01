@@ -144,13 +144,18 @@ button,
   background: rgba(23, 26, 55, 0.041);
   border: 1px solid var(--border);
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.7px;
   backdrop-filter: blur(8px);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  height: 50px;
+  width: 140px;
+
+  display: flex;
+  justify-content: center;   
+  align-items: center;       
+  text-align: center;
+  
 }
 
 .resume-btn:hover {
