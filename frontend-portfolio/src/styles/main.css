@@ -491,7 +491,8 @@ button:focus-visible {
   }
 
   .resume-btn {
-    width: 70%;
+    width: 60%;
+    height: auto;
     max-width: 200px;
     margin: 20px auto;
 
