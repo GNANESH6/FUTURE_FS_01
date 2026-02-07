@@ -17,7 +17,7 @@ export default function Education() {
           <div key={e._id} className="card">
             <h3>{e.degree}</h3>
             <p className="muted">{e.institute}</p>
-            <span className="muted">{e.year}</span>
+            <p className="muted">{e.year}</p>
           </div>
         ))}
       </div>
