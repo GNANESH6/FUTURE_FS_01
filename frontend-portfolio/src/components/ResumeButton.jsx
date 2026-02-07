@@ -19,7 +19,7 @@ export default function ResumeButton() {
       rel="noreferrer"
       className="resume-btn"
     >
-       Resume 
+      My Resume 
     </a>
   );
 }
