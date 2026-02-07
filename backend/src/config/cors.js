@@ -3,7 +3,9 @@ import cors from "cors";
 const allowedOrigins = [
   "https://gnanesh-portfolio-delta.vercel.app",
   "https://admin-gnanesh.vercel.app",
-  "http://localhost:5173"
+  "http://localhost:5173",
+  "http://localhost:5175"
+
 ];
 
 const corsOptions = {
