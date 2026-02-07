@@ -85,7 +85,7 @@ button,
   margin-left: 25px;
   z-index: 50;
   backdrop-filter: blur(12px);
-  background: rgba(11, 13, 18, 0.7);
+  background: rgba(255, 255, 255, 0);
   border-bottom: 1px solid var(--border);
 }
 
@@ -150,12 +150,12 @@ button,
   backdrop-filter: blur(8px);
   height: 50px;
   width: 140px;
+  margin-top: 50px;
 
   display: flex;
-  justify-content: center;   
-  align-items: center;       
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  
 }
 
 .resume-btn:hover {
@@ -479,7 +479,7 @@ button:focus-visible {
   }
 
   .hero p {
-    font-size: 14px;
+    font-size: 15px;
     max-width: 100%;
   }
 
@@ -488,6 +488,26 @@ button:focus-visible {
     width: 200px;
     margin: 0 auto;
     border-radius: 22px;
+  }
+
+  .resume-btn {
+    width: 70%;
+    max-width: 200px;
+    margin: 20px auto;
+
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: rgba(179, 180, 193, 0.496);
+    border: 1px solid var(--border);
+
+    color: white;
+    font-size: 16px;
+    font-weight: 450;
+
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
   }
 
   /* ----- SECTIONS ----- */

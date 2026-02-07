@@ -8,13 +8,14 @@ export default function Hero() {
         <h2>Hello, I’m</h2>
         <h2>GNANESHWAR REDDY SANGATI</h2>
         <p>-Full-Stack Developer-</p>
+        <ResumeButton />
       </div>
 
       <img src={adminImg} alt="Admin" className="hero-img float" />
 
-      <div>
-        <ResumeButton />
-      </div>
+     
+        
+      
     </section>
   );
 }
