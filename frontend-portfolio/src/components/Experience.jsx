@@ -22,7 +22,7 @@ export default function Experience() {
       <h2 className="section-title">Experience</h2>
 
       <div className="grid">
-        {experience.map(exp => (
+        {experience.map((exp) => (
           <div key={exp._id} className="card">
             <h3>{exp.role}</h3>
             <p className="muted">{exp.company}</p>
