@@ -257,6 +257,11 @@ button.small {
   padding: 16px 26px;
   background: var(--panel);
   border-bottom: 1px solid var(--border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
 }
 
 .admin-nav a {
