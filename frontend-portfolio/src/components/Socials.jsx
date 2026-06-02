@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { socialIcons } from "../utils/socialIcons";
 import { FaGlobe } from "react-icons/fa";
 import LeetCodeStreakPanel from "./LeetCodeStreakPanel";
-import GithubStreakPanel from "./GithubStreakPanel";
+import GitHubStreakPanel from "./GitHubStreakPanel";
 
 export default function Contact() {
   const [socials, setSocials] = useState([]);
@@ -50,7 +50,7 @@ export default function Contact() {
 
       <div id="github-panel" style={{ marginTop: "48px" }}>
         <h2 className="section-title">GitHub Metrics</h2>
-        <GithubStreakPanel />
+        <GitHubStreakPanel />
       </div>
     </section>
   );
