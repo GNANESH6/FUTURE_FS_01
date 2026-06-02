@@ -31,12 +31,16 @@ export default function CinematicBackground() {
   const elements = useMemo(() => {
     const generated = [];
     let idCounter = 0;
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     
-    const layers = [
-      { depth: 1, count: 1, scaleRange: [1.0, 1.5], blur: 3, opacity: 0.35, speedRange: [0.02, 0.05] }, 
-      { depth: 2, count: 1, scaleRange: [0.6, 1.0], blur: 1, opacity: 0.55, speedRange: [0.01, 0.03] }, 
-      { depth: 3, count: 1, scaleRange: [0.3, 0.5], blur: 2, opacity: 0.4, speedRange: [0.005, 0.015] } 
-    ];
+    // Significantly reduce nodes on mobile to fix lagging
+    const layers = isMobile 
+      ? [ { depth: 2, count: 1, scaleRange: [0.6, 1.1], blur: 0, opacity: 0.35, speedRange: [0.01, 0.03] } ]
+      : [
+          { depth: 1, count: 1, scaleRange: [1.0, 1.5], blur: 3, opacity: 0.35, speedRange: [0.02, 0.05] }, 
+          { depth: 2, count: 1, scaleRange: [0.6, 1.0], blur: 1, opacity: 0.55, speedRange: [0.01, 0.03] }, 
+          { depth: 3, count: 1, scaleRange: [0.3, 0.5], blur: 2, opacity: 0.4, speedRange: [0.005, 0.015] } 
+        ];
 
     layers.forEach(layer => {
       for (let c = 0; c < layer.count; c++) {
@@ -139,6 +143,16 @@ export default function CinematicBackground() {
             border-radius: 20px;
             background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
             opacity: 0.8;
+          }
+          @media (max-width: 768px) {
+            .tech-node-3d {
+              backdrop-filter: none;
+              -webkit-backdrop-filter: none;
+              box-shadow: none;
+            }
+            .tech-node-3d::after {
+              display: none;
+            }
           }
         `}
       </style>
