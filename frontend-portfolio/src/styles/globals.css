@@ -20,13 +20,12 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg);
 }
 
 body {
   margin: 0 0 0 10px;
-  background: radial-gradient(1200px 600px at 10% -10%, #1a2340, transparent),
-              radial-gradient(800px 400px at 90% 10%, #0e7490, transparent),
-              var(--bg);
+  background: transparent;
   color: var(--text);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;

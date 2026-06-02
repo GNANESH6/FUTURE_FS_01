@@ -8,16 +8,21 @@ export const getSettings = async (req, res) => {
 
 // ADMIN save/update
 export const saveSettings = async (req, res) => {
-  const { email, phone } = req.body;
+  try {
+    const { email, phone, leetcodeUsername, githubUsername } = req.body;
+    let settings = await Settings.findOne();
 
-  let settings = await Settings.findOne();
-  if (!settings) {
-    settings = new Settings({ email, phone });
-  } else {
-    settings.email = email;
-    settings.phone = phone;
+    if (!settings) {
+      settings = new Settings({ email, phone, leetcodeUsername, githubUsername });
+    } else {
+      settings.email = email;
+      settings.phone = phone;
+      settings.leetcodeUsername = leetcodeUsername;
+      settings.githubUsername = githubUsername;
+    }
+    await settings.save();
+    res.json(settings);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-
-  await settings.save();
-  res.json(settings);
 };

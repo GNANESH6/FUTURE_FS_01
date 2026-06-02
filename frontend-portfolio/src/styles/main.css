@@ -31,11 +31,12 @@
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg);
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
   font-family:
     system-ui,
@@ -82,7 +83,7 @@ button,
 .navbar {
   position: sticky;
   top: 0;
-  margin-left: 25px;
+  margin: 0;
   z-index: 50;
   backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0);
@@ -96,6 +97,14 @@ button,
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.mobile-menu {
+  display: none;
 }
 
 .nav-left {
@@ -429,35 +438,102 @@ button:focus-visible {
 @media (max-width: 768px) {
   /* ----- APP WIDTH CONTROL ----- */
   body {
-    max-width: 420px;
-    margin: 2px auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
   }
 
   /* ----- NAVBAR FIX ----- */
   .navbar {
-    margin: 1px 3px 1px 3px;
+    margin: 0;
   }
 
   .navbar-inner {
-    flex-direction: column;
-    gap: 10px;
-    padding: 14px 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
   }
 
-  .nav-left {
-    font-size: 16px;
+  .desktop-menu {
+    display: none;
+  }
+
+  /* Hamburger Toggle */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 65;
+    position: relative;
+  }
+
+  .hamburger-bar {
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-toggle.open .hamburger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle.open .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.open .hamburger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(7, 13, 26, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+
+  .mobile-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
     text-align: center;
   }
 
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  .mobile-links a {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
   }
 
-  .nav-links a {
-    font-size: 14px;
+  .mobile-links a:hover {
+    color: var(--primary);
   }
 
   /* ----- HERO FIX (BIGGEST ISSUE) ----- */
@@ -578,3 +654,541 @@ button:focus-visible {
     height: 360px;
   }
 }
+
+/* ======================================================
+   LEETCODE STREAK PANEL
+====================================================== */
+.leetcode-panel {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 26px;
+  border-radius: 20px;
+  background: rgba(13, 20, 38, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--text);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Header */
+.leetcode-panel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.leetcode-panel .user-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.leetcode-panel .user-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid var(--accent, #22d3ee);
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.3);
+  object-fit: cover;
+}
+
+.leetcode-panel .user-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.3px;
+}
+
+.leetcode-panel .ranking-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.leetcode-panel .badge {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+}
+
+.leetcode-panel .badge.rating {
+  border-color: rgba(34, 211, 238, 0.3);
+  color: #22d3ee;
+  box-shadow: inset 0 0 8px rgba(34, 211, 238, 0.1);
+}
+
+.leetcode-panel .refresh-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  width: 38px;
+  height: 38px;
+}
+
+.leetcode-panel .refresh-btn:hover {
+  background: rgba(34, 211, 238, 0.15);
+  border-color: #22d3ee;
+  color: #22d3ee;
+  transform: rotate(180deg);
+}
+
+/* Statistics Grid */
+.leetcode-panel .stats-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.3fr;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .leetcode-panel .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.leetcode-panel .stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 160px;
+  transition: all 0.2s ease;
+}
+
+.leetcode-panel .stat-card:hover {
+  border-color: rgba(34, 211, 238, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.leetcode-panel .stat-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* Circular Progress */
+.leetcode-panel .circular-progress {
+  position: relative;
+  width: 90px;
+  height: 90px;
+}
+
+.leetcode-panel .circular-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.leetcode-panel .ring-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 2.8;
+}
+
+.leetcode-panel .ring-bar {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.leetcode-panel .ring-bar.total {
+  stroke: #22d3ee;
+}
+
+.leetcode-panel .circular-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.leetcode-panel .circular-text .num {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.leetcode-panel .circular-text .lbl {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* Consistency Streak Card */
+.leetcode-panel .streak-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.leetcode-panel .streak-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.leetcode-panel .streak-icon {
+  font-size: 26px;
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.2));
+}
+
+.leetcode-panel .streak-icon.active-icon {
+  color: #f97316;
+  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.4));
+  animation: pulse 1.8s infinite alternate;
+}
+
+.leetcode-panel .streak-icon.longest-icon {
+  color: #eab308;
+  filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.4));
+}
+
+.leetcode-panel .streak-value {
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+}
+
+.leetcode-panel .streak-label {
+  font-size: 11px;
+  color: var(--muted);
+  display: block;
+}
+
+/* Difficulty breakdown */
+.leetcode-panel .level-bar-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leetcode-panel .level-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.leetcode-panel .level-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.leetcode-panel .level-lbl {
+  font-weight: 500;
+}
+
+.leetcode-panel .level-lbl.easy {
+  color: #10b981;
+}
+
+.leetcode-panel .level-lbl.medium {
+  color: #f59e0b;
+}
+
+.leetcode-panel .level-lbl.hard {
+  color: #ef4444;
+}
+
+.leetcode-panel .level-nums {
+  color: var(--muted);
+}
+
+.leetcode-panel .level-bar-container {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.leetcode-panel .level-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.leetcode-panel .level-bar.easy-bar {
+  background: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+}
+
+.leetcode-panel .level-bar.medium-bar {
+  background: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+}
+
+.leetcode-panel .level-bar.hard-bar {
+  background: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+}
+
+/* Heatmap Section */
+.leetcode-panel .heatmap-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 24px;
+  width: 100%;
+}
+
+.leetcode-panel .section-subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.2px;
+}
+
+.leetcode-panel .heatmap-container {
+  position: relative;
+  width: 100%;
+}
+
+.leetcode-panel .heatmap-scroll {
+  overflow-x: auto;
+  width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.leetcode-panel .heatmap-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.leetcode-panel .heatmap-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.leetcode-panel .heatmap-wrapper {
+  min-width: 740px; /* Force minimum width to keep grid format neat */
+  padding-bottom: 8px;
+}
+
+.leetcode-panel .heatmap-months {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 10px;
+  gap: 3px;
+  height: 20px;
+  margin-bottom: 5px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.leetcode-panel .month-label {
+  grid-row: 1;
+  width: 10px;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.leetcode-panel .heatmap-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 10px);
+  grid-auto-columns: 10px;
+  grid-auto-flow: column;
+  gap: 3px;
+}
+
+.leetcode-panel .heatmap-cell {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  transition: transform 0.1s ease;
+}
+
+.leetcode-panel .heatmap-cell.pad {
+  background: transparent !important;
+  box-shadow: none !important;
+  pointer-events: none;
+}
+
+.leetcode-panel .heatmap-cell:not(.pad):hover {
+  transform: scale(1.3);
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Heatmap Tooltip */
+.leetcode-panel .heatmap-tooltip {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  color: var(--text);
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Skeletons */
+.leetcode-panel.loading .skeleton {
+  opacity: 0.6;
+}
+
+.leetcode-panel.loading .header-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.leetcode-panel.loading .skeleton-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  animation: pulse 1.5s infinite alternate;
+}
+
+.leetcode-panel.loading .skeleton-line {
+  height: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  margin-bottom: 6px;
+  width: 140px;
+  animation: pulse 1.5s infinite alternate;
+}
+
+.leetcode-panel.loading .skeleton-line.short {
+  width: 80px;
+}
+
+.leetcode-panel.loading .skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .leetcode-panel.loading .skeleton-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.leetcode-panel.loading .skeleton-card {
+  height: 160px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  animation: pulse 1.5s infinite alternate;
+}
+
+.leetcode-panel.loading .skeleton-heatmap {
+  height: 100px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  animation: pulse 1.5s infinite alternate;
+}
+
+/* Error Card */
+.leetcode-panel.error-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+  border-color: rgba(239, 68, 68, 0.25);
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
+}
+
+.leetcode-panel .error-icon {
+  font-size: 40px;
+  color: #ef4444;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.4));
+}
+
+.leetcode-panel .retry-btn {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  transition: all 0.2s ease;
+}
+
+.leetcode-panel .retry-btn:hover {
+  background: #ef4444;
+  color: white;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.95; }
+}
+
+/* Mobile responsive enhancements for metrics panels */
+@media (max-width: 480px) {
+  .leetcode-panel {
+    padding: 16px 12px;
+  }
+  .leetcode-panel .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+  }
+  .leetcode-panel .refresh-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .leetcode-panel .stats-grid {
+    gap: 12px;
+  }
+  .leetcode-panel .stat-card {
+    padding: 16px 12px;
+    min-height: 140px;
+  }
+}
+

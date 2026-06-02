@@ -8,6 +8,7 @@ import {
   FaGlobe,
   FaEnvelope,
 } from "react-icons/fa";
+import { SiLeetcode, SiGeeksforgeeks } from "react-icons/si";
 
 export const socialIcons = {
   GitHub: FaGithub,
@@ -18,4 +19,6 @@ export const socialIcons = {
   YouTube: FaYoutube,
   Website: FaGlobe,
   Email: FaEnvelope,
+  LeetCode: SiLeetcode,
+  GeeksforGeeks: SiGeeksforgeeks,
 };

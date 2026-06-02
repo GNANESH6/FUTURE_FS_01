@@ -15,6 +15,7 @@ import Socials from "./pages/Socials";
 import Resume from "./pages/Resume";
 
 import AdminNavbar from "./components/AdminNavbar";
+import CinematicBackground from "./components/CinematicBackground";
 
 function ProtectedRoute({ children }) {
   const { token } = useAuth();
@@ -25,6 +26,7 @@ function ProtectedRoute({ children }) {
 export default function App() {
   return (
     <>
+      <CinematicBackground />
       {/* Show navbar only when logged in */}
       <AdminNavbar />
 

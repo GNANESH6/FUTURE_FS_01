@@ -64,7 +64,7 @@ export default function Socials() {
       {/* INPUT FORM */}
       <div className="card admin-social-form">
         <input
-          placeholder="Platform (GitHub / LinkedIn / Email / Website)"
+          placeholder="Platform (GitHub / LinkedIn / LeetCode / GeeksforGeeks / Email / Website)"
           value={form.platform}
           onChange={e =>
             setForm({ ...form, platform: e.target.value })

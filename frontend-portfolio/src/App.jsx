@@ -8,11 +8,13 @@ import Education from "./components/Education";
 import Socials from "./components/Socials";
 import Footer from "./components/Footer";
 import Seo from "./seo/Seo";
+import CinematicBackground from "./components/CinematicBackground";
 
 export default function App() {
   return (
     <>
       <Seo />
+      <CinematicBackground />
       <Navbar />
       <Hero />
       <About />

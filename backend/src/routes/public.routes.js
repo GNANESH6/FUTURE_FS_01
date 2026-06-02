@@ -8,6 +8,8 @@ import { getSocials } from "../controllers/social.controller.js";
 import { getSeo } from "../controllers/seo.controller.js";
 import { getSettings } from "../controllers/settings.controller.js";
 import { getResume } from "../controllers/resume.controller.js";
+import { getLeetCodeStats } from "../controllers/leetcode.controller.js";
+import { getGithubStats } from "../controllers/github.controller.js";
 
 const router = Router();
 
@@ -20,6 +22,7 @@ router.get("/socials", getSocials);
 router.get("/seo", getSeo);
 router.get("/settings", getSettings);
 router.get("/resume", getResume);
-
+router.get("/leetcode/:username", getLeetCodeStats);
+router.get("/github/:username", getGithubStats);
 
 export default router;
