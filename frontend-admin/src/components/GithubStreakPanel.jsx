@@ -35,28 +35,43 @@ export default function GithubStreakPanel({ username: propUsername }) {
     }
   }, [propUsername]);
 
-  const fetchStats = useCallback(() => {
+  const fetchStats = useCallback((abortController) => {
     if (!username) return;
     setLoading(true);
     setError(null);
 
+    const config = abortController ? { signal: abortController.signal } : {};
+
     axios
-      .get(`${API_BASE_URL}/github/${username}`)
+      .get(`${API_BASE_URL}/github/${username}`, config)
       .then((res) => {
-        setData(res.data);
+        if (res.data && res.data.success) {
+          setData(res.data.data);
+        } else {
+          // Fallback if backend hasn't updated yet
+          setData(res.data);
+        }
         setLoading(false);
       })
       .catch((err) => {
+        if (axios.isCancel(err)) {
+          return; // Request was aborted
+        }
         console.error("Failed to fetch GitHub statistics", err);
-        setError(err.response?.data?.error || "Failed to retrieve statistics.");
+        setError(err.response?.data?.message || err.response?.data?.error || "Failed to retrieve statistics.");
         setLoading(false);
       });
   }, [username]);
 
   useEffect(() => {
+    let abortController = null;
     if (username) {
-      fetchStats();
+      abortController = new AbortController();
+      fetchStats(abortController);
     }
+    return () => {
+      if (abortController) abortController.abort();
+    };
   }, [fetchStats, refreshKey, username]);
 
   // Auto-refresh every 5 minutes
