@@ -5,6 +5,7 @@ export default mongoose.model(
   new mongoose.Schema({
     degree: String,
     institute: String,
-    year: String
+    year: String,
+    score: String
   }, { timestamps: true })
 );

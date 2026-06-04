@@ -18,6 +18,7 @@ export default function Education() {
             <h3>{e.degree}</h3>
             <p className="muted">{e.institute}</p>
             <p className="muted">{e.year}</p>
+            {e.score && <p className="highlight">Score: {e.score}</p>}
           </div>
         ))}
       </div>

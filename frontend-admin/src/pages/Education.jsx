@@ -7,7 +7,8 @@ export default function Education() {
   const [form, setForm] = useState({
     degree: "",
     institute: "",
-    year: ""
+    year: "",
+    score: ""
   });
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function Education() {
 
   const addEducation = async () => {
     await adminApi.post("/admin/education", form);
-    setForm({ degree: "", institute: "", year: "" });
+    setForm({ degree: "", institute: "", year: "", score: "" });
 
     const res = await adminApi.get("/education");
     setItems(res.data);
@@ -52,6 +53,11 @@ export default function Education() {
         value={form.year}
         onChange={e => setForm({ ...form, year: e.target.value })}
       />
+      <input
+        placeholder="Score"
+        value={form.score}
+        onChange={e => setForm({ ...form, score: e.target.value })}
+      />
 
       <button onClick={addEducation}>Add</button>
 
@@ -59,6 +65,7 @@ export default function Education() {
         <div className="card" key={e._id}>
           <strong>{e.degree}</strong>
           <p>{e.institute} ({e.year})</p>
+          {e.score && <p>Score: {e.score}</p>}
           <button onClick={() => deleteEducation(e._id)}>Delete</button>
         </div>
       ))}
