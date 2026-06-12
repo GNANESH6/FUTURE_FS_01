@@ -41,9 +41,9 @@ export default function Navbar() {
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
           <a href="#leetcode">LeetCode</a>
           <a href="#github-panel">GitHub</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
 
@@ -55,9 +55,9 @@ export default function Navbar() {
           <a href="#projects" onClick={closeMenu}>Projects</a>
           <a href="#experience" onClick={closeMenu}>Experience</a>
           <a href="#education" onClick={closeMenu}>Education</a>
-          <a href="#contact" onClick={closeMenu}>Contact</a>
           <a href="#leetcode" onClick={closeMenu}>LeetCode</a>
           <a href="#github-panel" onClick={closeMenu}>GitHub</a>
+          <a href="#contact" onClick={closeMenu}>Contact</a>
         </div>
       </div>
     </nav>
