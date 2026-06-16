@@ -41,8 +41,7 @@ export default function Navbar() {
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
-          <a href="#leetcode">LeetCode</a>
-          <a href="#github-panel">GitHub</a>
+          <a href="#leetcode">Metrics</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
