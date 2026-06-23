@@ -210,7 +210,8 @@ export default function GithubStreakPanel({ username: propUsername }) {
             <h2 className="user-name">{username}</h2>
             <div className="ranking-badges">
               <span className="badge">
-                <FiGithub /> GitHub Profile
+                <FiGithub />
+                 GitHub Profile 
               </span>
             </div>
           </div>

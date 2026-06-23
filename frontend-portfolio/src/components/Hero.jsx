@@ -7,7 +7,7 @@ export default function Hero() {
       <div>
         <h2>Hello, I’m</h2>
         <h2>GNANESHWAR REDDY SANGATI</h2>
-        <p>-Full-Stack Developer-</p>
+        <p>-BackendDeveloper-</p>
         <ResumeButton />
       </div>
 

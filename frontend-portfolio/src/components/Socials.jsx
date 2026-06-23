@@ -22,7 +22,7 @@ export default function Contact() {
       </div>
 
       <div id="github-panel" style={{ marginTop: "48px" }}>
-        <h2 className="section-title">GitHub Metrics</h2>
+        {/* <h2 className="section-title">GitHub Metrics</h2> */}
         <GitHubStreakPanel />
       </div>
 

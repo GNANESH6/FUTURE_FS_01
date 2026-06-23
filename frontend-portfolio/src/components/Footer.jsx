@@ -15,7 +15,7 @@ export default function Footer() {
     <footer className="footer">
       <g>Email: {settings.email  || "—"}</g>|
       <g>Phone: {settings.phone || "—"}</g>|
-      <g>© 2026 Gnanesh Reddy All rights reserved</g>
+      <g>© Gnanesh Reddy All rights reserved</g>
     </footer>
   );
 }
